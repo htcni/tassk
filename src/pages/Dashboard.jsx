@@ -34,6 +34,11 @@ const Dashboard = () => {
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
+        breakpoint='lg'
+        collapsedWidth='0'
+        onBreakpoint={(broken) => {
+          console.log(broken)
+        }}
       >
         <div className='demo-logo-vertical' />
         <Menu
