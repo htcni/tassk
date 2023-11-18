@@ -2,6 +2,8 @@ import { Avatar, Flex } from 'antd'
 import Link from 'antd/es/typography/Link'
 import { useQuery } from 'react-query'
 import apiClient from '../http-common'
+import ProfileDropdown from './ProfilePopup'
+import ProfilePopup from './ProfilePopup'
 
 const DashboardHeader = () => {
   const { data, isLoading } = useQuery({
@@ -20,11 +22,12 @@ const DashboardHeader = () => {
       <Link>Projects</Link>
       <Link>Planning</Link>
       <Link>Reporting</Link>
-      <p>{data?.username}</p>
       <Flex style={{ marginLeft: 'auto' }} align='center'>
-        <Avatar style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>
+        <ProfilePopup user={data?.data} />
+
+        {/* <Avatar style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>
           {data?.data?.username[0].toUpperCase()}
-        </Avatar>
+        </Avatar> */}
       </Flex>
     </Flex>
   )
