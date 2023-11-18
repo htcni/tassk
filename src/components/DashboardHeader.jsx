@@ -4,14 +4,23 @@ import { useQuery } from 'react-query'
 import apiClient from '../http-common'
 import ProfileDropdown from './ProfilePopup'
 import ProfilePopup from './ProfilePopup'
+import { useNavigate } from 'react-router-dom'
 
 const DashboardHeader = () => {
+  const navigate = useNavigate()
+
   const { data, isLoading } = useQuery({
     queryKey: 'profile',
     queryFn: async () => {
       return await apiClient.get('/auth/users/me/')
     },
     onSuccess: () => {},
+    onError: (err) => {
+      if (err?.response.status === 401) {
+        localStorage.removeItem('authToken')
+        navigate('/', { replace: true })
+      }
+    },
   })
 
   return (
@@ -22,10 +31,6 @@ const DashboardHeader = () => {
       <Link>Reporting</Link>
       <Flex style={{ marginLeft: 'auto' }} align='center'>
         <ProfilePopup user={data?.data} />
-
-        {/* <Avatar style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}>
-          {data?.data?.username[0].toUpperCase()}
-        </Avatar> */}
       </Flex>
     </Flex>
   )
