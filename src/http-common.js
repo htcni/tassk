@@ -9,9 +9,16 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    config.headers['Authorization'] = `Token ${localStorage.getItem(
-      'authToken'
-    )}`
+    if (
+      config.url.includes('/tasks/') ||
+      config.url.includes('/auth/token/logout/') ||
+      config.url.includes('/auth/users/me/')
+    ) {
+      config.headers['Authorization'] = `Token ${localStorage.getItem(
+        'authToken'
+      )}`
+    }
+
     return config
   },
   (error) => {
