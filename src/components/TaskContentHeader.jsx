@@ -16,8 +16,7 @@ const TaskContentHeader = ({ onSetTableData }) => {
     mutationFn: async (newTask) => {
       return await apiClient.post('/tasks/', newTask)
     },
-    onSuccess: (res) => {
-      console.log(res)
+    onSuccess: () => {
       queryClient.invalidateQueries('tasks')
       setOpen(false)
     },

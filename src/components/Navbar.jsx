@@ -14,14 +14,16 @@ const Navbar = () => {
     <Flex justify='space-between' align='center' style={containerStyle}>
       <Flex>
         <Link to={'/'}>
-          <Title level={'h3'} style={{ margin: 0 }}>
+          <Title level={'h3'} style={{ margin: 0, color: '#fff' }}>
             Tassk
           </Title>
         </Link>
       </Flex>
       <Flex gap={8}>
         <Link to={'/login'}>
-          <Button type='ghost'>Sign In</Button>
+          <Button type='ghost' style={{ color: 'white' }}>
+            Sign In
+          </Button>
         </Link>
         <Link to={'/signup'}>
           <Button type='primary'>Get Started</Button>

@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import apiClient from '../http-common'
 import { useEffect, useState } from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import Paragraph from 'antd/es/typography/Paragraph'
 
 const LoginForm = () => {
   const navigate = useNavigate()
@@ -32,16 +33,16 @@ const LoginForm = () => {
       }
     },
     onError: (err) => {
-      console.log(err)
-      messageApi.open({
-        type: 'error',
-        content: 'Incorrect username and password',
-      })
+      if (err.response.status === '400') {
+        messageApi.open({
+          type: 'error',
+          content: 'Incorrect username and password',
+        })
+      }
     },
   })
 
   const onFinish = (values) => {
-    console.log('Success:', values)
     mutate(values)
   }
   const onFinishFailed = (errorInfo) => {
@@ -129,6 +130,11 @@ const LoginForm = () => {
               {isLoading ? 'Logging In' : 'Login'}
             </Button>
           </Form.Item>
+          <Paragraph style={{ margin: 0, textAlign: 'center' }}>
+            <span>
+              <Link to={'/signup'}>Create an account</Link>
+            </span>
+          </Paragraph>
         </Form>
       </Flex>
     </Flex>

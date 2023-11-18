@@ -135,7 +135,6 @@ const TaskTable = ({ tableData, onSetTableData }) => {
       return await apiClient.get('/tasks')
     },
     onSuccess: (res) => {
-      console.log(res)
       onSetTableData(res?.data?.results)
     },
   })
@@ -151,8 +150,7 @@ const TaskTable = ({ tableData, onSetTableData }) => {
         due_date: updateTask.due_date,
       })
     },
-    onSuccess: (res) => {
-      console.log(res)
+    onSuccess: () => {
       queryClient.invalidateQueries('tasks')
       messageApi.open({
         type: 'success',
@@ -167,11 +165,9 @@ const TaskTable = ({ tableData, onSetTableData }) => {
   // Delete Task
   const { mutate: deleteTask, isLoading: isDeleting } = useMutation({
     mutationFn: async (id) => {
-      console.log(id)
       return await apiClient.delete(`/tasks/${id}`)
     },
     onSuccess: (res) => {
-      console.log(res)
       queryClient.invalidateQueries('tasks')
       messageApi.open({
         type: 'success',
@@ -184,7 +180,6 @@ const TaskTable = ({ tableData, onSetTableData }) => {
   })
 
   const onCreate = (values) => {
-    console.log('Received values of form: ', values)
     mutate(values)
     setOpen(false)
   }

@@ -11,9 +11,7 @@ const DashboardHeader = () => {
     queryFn: async () => {
       return await apiClient.get('/auth/users/me/')
     },
-    onSuccess: (res) => {
-      console.log(res)
-    },
+    onSuccess: () => {},
   })
 
   return (

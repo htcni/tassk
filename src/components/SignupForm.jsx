@@ -5,6 +5,7 @@ import apiClient from '../http-common'
 import { useMutation } from 'react-query'
 import { useState } from 'react'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import Paragraph from 'antd/es/typography/Paragraph'
 
 const SignupForm = () => {
   const [errorMessage, setErrorMessage] = useState('')
@@ -17,13 +18,10 @@ const SignupForm = () => {
     mutationFn: async (newUser) => {
       return await apiClient.post('/auth/users/', newUser)
     },
-    onSuccess: (res) => {
-      console.log(res)
+    onSuccess: () => {
       navigate('/login', { state: data })
     },
     onError: (err) => {
-      console.log(err.response)
-
       if (err.response.status === 400) {
         setErrorMessage('Username already exists')
       }
@@ -116,6 +114,12 @@ const SignupForm = () => {
               {errorMessage}
             </p>
           )}
+          <Paragraph style={{ margin: 0, textAlign: 'center' }}>
+            Already a member?{' '}
+            <span>
+              <Link to={'/login'}>Login</Link>
+            </span>
+          </Paragraph>
         </Form>
       </Flex>
     </Flex>
