@@ -6,9 +6,11 @@ const UpdateTask = ({ open, onCreate, onCancel, initialValues }) => {
 
   //convert date
 
-  if (initialValues) {
-    initialValues['due_date'] = dayjs(initialValues['due_date'])
-  }
+  // if (initialValues) {
+  //   initialValues['due_date'] = dayjs(initialValues['due_date'])
+  // }
+
+  if (!initialValues) return
 
   return (
     <Modal
@@ -35,9 +37,10 @@ const UpdateTask = ({ open, onCreate, onCancel, initialValues }) => {
         layout='vertical'
         name='form_in_modal_update'
         preserve={false}
-        initialValues={initialValues}
+        // initialValues={initialValues}
       >
         <Form.Item
+          initialValue={initialValues['title']}
           name='title'
           label='Title'
           rules={[
@@ -67,6 +70,7 @@ const UpdateTask = ({ open, onCreate, onCancel, initialValues }) => {
           />
         </Form.Item>
         <Form.Item
+          initialValue={initialValues['priority']}
           name='priority'
           label='Priority'
           style={{ display: 'inline-block', margin: '0 1rem' }}
