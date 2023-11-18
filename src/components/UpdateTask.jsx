@@ -52,10 +52,15 @@ const UpdateTask = ({ open, onCreate, onCancel, initialValues }) => {
         >
           <Input />
         </Form.Item>
-        <Form.Item name='description' label='Summary'>
+        <Form.Item
+          name='description'
+          label='Summary'
+          initialValue={initialValues['description']}
+        >
           <Input type='textarea' />
         </Form.Item>
         <Form.Item
+          initialValue={initialValues['status']}
           name='status'
           label='Status'
           style={{ display: 'inline-block' }}
@@ -84,7 +89,11 @@ const UpdateTask = ({ open, onCreate, onCancel, initialValues }) => {
             ]}
           />
         </Form.Item>
-        <Form.Item label='Due Date' name='due_date'>
+        <Form.Item
+          label='Due Date'
+          name='due_date'
+          initialValue={dayjs(initialValues['due_date'])}
+        >
           <DatePicker />
         </Form.Item>
       </Form>
