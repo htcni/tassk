@@ -45,13 +45,15 @@ const TaskTable = ({ tableData, onSetTableData }) => {
     {
       title: 'Task Name',
       dataIndex: 'title',
-      width: '30%',
+      // width: '30%',
+      // responsive: ['md'],
     },
     {
       title: 'Due Date',
       dataIndex: 'due_date',
       render: (due_date) => <span>{formatDate(due_date)}</span>,
-      width: '20%',
+      // width: '20%',
+      // responsive: ['md'],
     },
     {
       title: 'Priority',
@@ -64,7 +66,8 @@ const TaskTable = ({ tableData, onSetTableData }) => {
           {priority}
         </Tag>
       ),
-      width: '20%',
+      // width: '20%',
+      // responsive: ['md'],
     },
     {
       title: 'Status',
@@ -85,15 +88,19 @@ const TaskTable = ({ tableData, onSetTableData }) => {
         </div>
       ),
 
-      width: '20%',
+      // width: '20%',
+      // responsive: ['md'],
     },
     {
       title: 'Owner',
       dataIndex: 'user',
+      // responsive: ['md'],
     },
     {
       title: 'Action',
       key: 'operation',
+      // responsive: ['md'],
+
       fixed: 'right',
       width: 100,
       onCell: (record, rowIndex) => {
@@ -189,6 +196,9 @@ const TaskTable = ({ tableData, onSetTableData }) => {
       {contextHolder}
       <Table
         dataSource={tableData}
+        scroll={{
+          x: 800,
+        }}
         columns={columns}
         rowKey={(record) => record.id}
         style={{ marginTop: '1rem' }}

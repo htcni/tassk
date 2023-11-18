@@ -33,7 +33,7 @@ const LoginForm = () => {
       }
     },
     onError: (err) => {
-      if (err.response.status === '400') {
+      if (err.response.status === 400) {
         messageApi.open({
           type: 'error',
           content: 'Incorrect username and password',
@@ -77,7 +77,7 @@ const LoginForm = () => {
           name='basic'
           layout='vertical'
           style={{
-            width: 400,
+            width: '375px',
             padding: '2rem',
           }}
           initialValues={{
