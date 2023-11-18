@@ -8,7 +8,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import Paragraph from 'antd/es/typography/Paragraph'
 
 const SignupForm = () => {
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState()
   const navigate = useNavigate()
   const data = {
     msg: 'Registration successfull. Please Login to continue.',
@@ -22,8 +22,9 @@ const SignupForm = () => {
       navigate('/login', { state: data })
     },
     onError: (err) => {
+      console.log(err)
       if (err.response.status === 400) {
-        setErrorMessage('Username already exists')
+        setErrorMessage(err.response?.data)
       }
     },
   })
@@ -56,7 +57,7 @@ const SignupForm = () => {
           name='basic'
           layout='vertical'
           style={{
-            width: 400,
+            width: '375px',
             padding: '2rem',
           }}
           initialValues={{
@@ -109,11 +110,15 @@ const SignupForm = () => {
               {isLoading ? 'Signing Up' : 'Sign Up'}
             </Button>
           </Form.Item>
-          {errorMessage && (
-            <p style={{ textAlign: 'center', color: 'red', margin: 0 }}>
-              {errorMessage}
-            </p>
-          )}
+          {Object.keys(errorMessage || {}).map((field) => (
+            <div key={field}>
+              {errorMessage[field].map((errorMessage, index) => (
+                <p key={index} style={{ color: 'red' }}>
+                  {errorMessage}
+                </p>
+              ))}
+            </div>
+          ))}
           <Paragraph style={{ margin: 0, textAlign: 'center' }}>
             Already a member?{' '}
             <span>
