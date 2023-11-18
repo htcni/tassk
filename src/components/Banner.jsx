@@ -43,13 +43,28 @@ const Banner = () => {
           Get quick and productive with your teammates.
         </h2>
         <Link to={'/signup'}>
-          <Button shape='round' size='large' style={{ marginTop: '2rem' }}>
+          <Button
+            shape='round'
+            size='large'
+            type='primary'
+            style={{
+              marginTop: '2rem',
+              fontWeight: '500',
+            }}
+          >
             Get Started
           </Button>
         </Link>
 
         <Flex justify='center' style={{ marginTop: '4rem' }}>
-          <img src='https://placehold.co/1000x800' />
+          <img
+            src='/landing.png'
+            width={1200}
+            style={{
+              borderRadius: '8px',
+              boxShadow: 'rgba(100, 100, 111, 0.2), 0px 7px 29px 0px',
+            }}
+          />
         </Flex>
       </Col>
     </Row>

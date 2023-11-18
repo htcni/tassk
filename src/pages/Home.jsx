@@ -9,7 +9,7 @@ const headerStyle = {
   height: 64,
   paddingInline: 50,
   lineHeight: '64px',
-  backgroundColor: '#fff',
+  backgroundColor: '#090946',
 }
 
 const footerStyle = {
