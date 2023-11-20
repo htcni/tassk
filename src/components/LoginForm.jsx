@@ -137,6 +137,12 @@ const LoginForm = () => {
           </Paragraph>
         </Form>
       </Flex>
+      <Alert
+        message='The hosted instance make take some time to respond.'
+        type='info'
+        showIcon
+        style={{ marginTop: '4rem' }}
+      />
     </Flex>
   )
 }

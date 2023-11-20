@@ -1,4 +1,4 @@
-import { Button, Flex, Form, Input } from 'antd'
+import { Button, Flex, Form, Alert, Input } from 'antd'
 import Title from 'antd/es/typography/Title'
 import { Link, useNavigate } from 'react-router-dom'
 import apiClient from '../http-common'
@@ -127,6 +127,12 @@ const SignupForm = () => {
           </Paragraph>
         </Form>
       </Flex>
+      <Alert
+        message='The hosted instance make take some time to respond.'
+        type='info'
+        showIcon
+        style={{ marginTop: '4rem' }}
+      />
     </Flex>
   )
 }
