@@ -29,7 +29,7 @@ const Home = () => {
         <Content>
           <Banner />
         </Content>
-        <Footer style={footerStyle}>Footer</Footer>
+        <Footer style={footerStyle}>Tassk Design ©2023</Footer>
       </Layout>
     </Space>
   )
